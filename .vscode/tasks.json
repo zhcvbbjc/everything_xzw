@@ -1,0 +1,48 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build EverythingClone (MinGW)",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-std=c++20",
+                "-Wall",
+                "-Wextra",
+                "-Wpedantic",
+                "-O2",
+                "-DUNICODE",
+                "-D_UNICODE",
+                "-municode",
+                "-I${workspaceFolder}/include",
+                "${workspaceFolder}/src/gui/main_window.cpp",
+                "${workspaceFolder}/src/gui/edit_control.cpp",
+                "${workspaceFolder}/src/gui/list_view.cpp",
+                "${workspaceFolder}/src/core/indexer.cpp",
+                "${workspaceFolder}/src/core/mft_reader.cpp",
+                "${workspaceFolder}/src/core/search_engine.cpp",
+                "${workspaceFolder}/src/core/usn_watcher.cpp",
+                "${workspaceFolder}/src/utils/logger.cpp",
+                "${workspaceFolder}/src/utils/memory_mapped_file.cpp",
+                "${workspaceFolder}/src/utils/string_utils.cpp",
+                "${workspaceFolder}/src/main.cpp",
+                "-o",
+                "${workspaceFolder}/bin/EverythingClone.exe",
+                "-lcomctl32",
+                "-lole32",
+                "-luuid"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": "$gcc"
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{
+  "configurations": [
+    {
+      "name": "MinGW EverythingClone",
+      "includePath": [
+        "${workspaceFolder}/include",
+        "${workspaceFolder}/src"  // 可选：方便 .cpp 互相 include
+      ],
+      "defines": [
+        "UNICODE",
+        "_UNICODE"
+      ],
+      "compilerPath": "g++",
+      "cStandard": "c17",
+      "cppStandard": "c++20",
+      "intelliSenseMode": "windows-gcc-x64"
+      // "configurationProvider": null
+    }
+  ],
+  "version": 4
+}
