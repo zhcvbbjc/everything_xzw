@@ -1,9 +1,11 @@
 #pragma once
 
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 #include <string>
 #include <cstdint>
+#include <algorithm>
 
 /*
  * FRNMapper
@@ -17,7 +19,7 @@ class FRNMapper {
 public:
     struct Node {
         uint64_t frn;
-        uint64_t parent_frn;
+        std::vector<uint64_t> parent_frns;
         std::wstring name;
         bool is_directory;
     };
@@ -32,13 +34,16 @@ public:
     void remove_node(uint64_t frn);
 
     // 构建完整路径
-    std::wstring bulid_path(uint64_t frn) const;
+    std::wstring build_path(uint64_t frn) const;
 
     // 是否存在
     bool exists(uint64_t frn) const;
 
 private:
-    std::wstring build_recursive(uint64_t frn) const;
+    std::wstring build_recursive(
+        uint64_t frn,
+        std::unordered_set<uint64_t>& visited
+    ) const;
 
 private:
     std::unordered_map<uint64_t, Node> m_nodes;

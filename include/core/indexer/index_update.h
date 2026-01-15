@@ -1,36 +1,33 @@
 #pragma once
 
 #include <atomic>
+#include <string>
 #include <thread>
+#include <vector>
 
-#include "core/usn/usn_event.h"
-
-/*
- * IndexUpdate
- * ------------------------------------
- * 封装 USN Journal 监听逻辑
- * 将 NTFS 变更事件转换为高层回调
- */
-class Indexer; // 前向声明
+class Indexer;
 
 class IndexUpdate {
 public:
-    explicit IndexUpdate(Indexer& indexer);
+    IndexUpdate(
+        Indexer& indexer,
+        std::vector<std::wstring> volumes
+    );
+
     ~IndexUpdate();
 
-    // 禁止拷贝
-    IndexUpdate (const IndexUpdate&) = delete;
+    IndexUpdate(const IndexUpdate&) = delete;
     IndexUpdate& operator=(const IndexUpdate&) = delete;
 
-    // 启动 / 停止 USN监听
     void start();
     void stop();
 
 private:
-    void worker_thread();
+    void watcher_thread(std::wstring volume);
 
 private:
     Indexer& m_indexer;
-    std::atomic<bool> m_running;
-    std::thread m_thread;
+    std::vector<std::wstring> m_volumes; // ← 明确：这是我自己的
+    std::atomic<bool> m_running{false};
+    std::vector<std::thread> m_threads;
 };

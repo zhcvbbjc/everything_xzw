@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 #include "core/indexer/indexer_types.h"
 

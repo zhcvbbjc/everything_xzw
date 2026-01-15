@@ -41,6 +41,7 @@ public:
 private:
     void open_volume();
     void query_journal();
+    void enable_journal();
 
 private:
     std::wstring m_volume_name;

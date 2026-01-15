@@ -16,6 +16,9 @@ struct UsnState {
     uint64_t next_usn = 0;    // 下次读取起点
     uint64_t last_sync_time = 0; // 可选（调试/统计）
 
+    // 是否是第一次运行
+    bool first_run = true;
+
     bool valid() const {
         return journal_id != 0;
     };
@@ -24,5 +27,6 @@ struct UsnState {
         journal_id = 0;
         next_usn = 0;
         last_sync_time = 0;
+        first_run = true;
     };
 };

@@ -35,5 +35,5 @@ public:
 private:
     static const NTFS_ATTRIBUTE_HEADER* next_attribute(const NTFS_ATTRIBUTE_HEADER* attr);
 
-    static const NTFS_FILE_NAME_ATTR* parse_file_name_attr(const NTFS_ATTRIBUTE_HEADER* attr);
+    static const NTFS_FILE_NAME_ATTRIBUTE* parse_file_name_attr(const NTFS_ATTRIBUTE_HEADER* attr);
 };

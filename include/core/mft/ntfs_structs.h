@@ -53,7 +53,7 @@ struct NTFS_ATTRIBUTE_HEADER {
 /* 
  * $FILE_NAME 属性（最重要） 
  */
-struct NTFS_FILE_NAME_ATTR {
+struct NTFS_FILE_NAME_ATTRIBUTE {
     // 父目录 FRN
     uint64_t parent_directory;
 
